@@ -5,17 +5,55 @@ return {
   opts = {
     provider = 'custom',
     -- cursor_applying_provider = 'custom',
-    -- behaviour = {
-    --   enable_cursor_planning_mode = true,
-    -- },
+    behaviour = {
+      auto_focus_sidebar = false,
+      -- enable_cursor_planning_mode = true,
+    },
     vendors = {
       custom = {
         __inherited_from = 'openai',
-        endpoint = 'https://api.nuwaapi.com/v1',
+        endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
         api_key_name = 'AVANTE_TOKEN',
-        model = 'gpt-4o',
+        model = 'deepseek-v3',
         disable_tools = true,
       },
+    },
+    hints = { enabled = false },
+    mappings = {
+      diff = {
+        ours = '<leader>amo',
+        theirs = '<leader>amt',
+        all_theirs = '<leader>amat',
+        both = '<leader>amb',
+        cursor = '<leader>amc',
+        next = '<leader>amn',
+        prev = '<leader>amN',
+      },
+      sidebar = {
+        apply_all = 'A',
+        apply_cursor = 'a',
+        switch_windows = '<C-j>',
+        reverse_switch_windows = '<C-k>',
+        add_file = 'a',
+      },
+      jump = {
+        next = 'n',
+        prev = 'N',
+      },
+      submit = {
+        insert = '<CR>',
+      },
+    },
+    windows = {
+      sidebar_header = {
+        enabled = false,
+      },
+      input = {
+        height = 6,
+      },
+    },
+    file_selector = {
+      provider = 'telescope',
     },
   },
   build = 'make',
@@ -29,9 +67,9 @@ return {
       'MeanderingProgrammer/render-markdown.nvim',
       opts = {
         code = {
-          disable_background = true,
-          border = 'thin',
-          width = 'block',
+          enabled = true,
+          language_icon = true,
+          language_name = true,
         },
         file_types = { 'markdown', 'Avante' },
       },

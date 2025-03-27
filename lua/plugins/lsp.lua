@@ -119,7 +119,15 @@ return {
       cmake = {},
       cssls = {},
       html = {},
-      pyright = {},
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = 'off',
+            },
+          },
+        },
+      },
       ts_ls = {},
       lua_ls = {
         settings = {

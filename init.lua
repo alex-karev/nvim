@@ -1,10 +1,11 @@
--- [[ Globals ]]
+-- [[ Globals ]] 
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
+
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.mouse = 'a'
@@ -16,6 +17,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
+vim.opt.wrap = true
 vim.opt.splitright = true -- New split positions
 vim.opt.splitbelow = true
 vim.opt.list = true -- Whitespace display
@@ -39,6 +41,8 @@ vim.keymap.set('n', '<leader>ab', '<cmd>AvanteClear<CR>', { desc = 'avante: clea
 vim.keymap.set({'v', 'n'}, '<leader>/', 'gc', { desc = 'Comment block' })
 vim.keymap.set('n', '<Tab>', '<cmd>BufferNext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>BufferPrev<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
+vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 
 -- Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')

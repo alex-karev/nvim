@@ -8,13 +8,14 @@ return {
   require 'plugins.autoformat',
   require 'plugins.autocomplete',
   require 'plugins.statusline',
-  -- require 'plugins.bufferline',
   require 'plugins.avante',
-  --require 'plugins.gitsigns',
+  require 'plugins.gitsigns',
+  require 'plugins.startup',
   --require 'plugins.lint',
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
-  {
+
+  { -- Buffers as tabs
     'romgrk/barbar.nvim',
     dependencies = {
       'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
@@ -24,12 +25,32 @@ return {
     end,
     opts = {
       animation = false,
-      separator_at_end = false,
+      icons = {
+        separator_at_end = false,
+      },
       sidebar_filetypes = {
-        ['neo-tree'] = {event = 'BufWipeout', text = 'File Selector', align = 'center'},
+        ['neo-tree'] = { event = 'BufWipeout', text = 'File Selector', align = 'center' },
       },
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+
+  { -- LazyGit
+    'kdheepak/lazygit.nvim',
+    lazy = true,
+    cmd = {
+      'LazyGit',
+      'LazyGitConfig',
+      'LazyGitCurrentFile',
+      'LazyGitFilter',
+      'LazyGitFilterCurrentFile',
+    },
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+    },
+    keys = {
+      { '<leader>gl', '<cmd>LazyGit<CR>', desc = '[L]azy[G]it' },
+    },
   },
 
   { -- Toggle terminal
@@ -37,6 +58,7 @@ return {
     version = '*',
     opts = {},
   },
+
   { -- Configure lua for nvim
     'folke/lazydev.nvim',
     ft = 'lua',
@@ -74,6 +96,7 @@ return {
         { '<leader>d', group = '[D]ocument' },
         { '<leader>l', group = '[L]SP' },
         { '<leader>a', group = '[A]vante' },
+        { '<leader>g', group = '[G]it' },
         { '<leader>f', group = '[F]ind/[F]ormat' },
         { '<leader>h', group = 'Git [H]unk', mode = { 'n', 'v' } },
       },
@@ -98,11 +121,12 @@ return {
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
+
   { -- Small usefull keybindings
     'echasnovski/mini.nvim',
     config = function()
       require('mini.ai').setup { n_lines = 500 }
-      require('mini.surround').setup()
+      --require('mini.surround').setup()
       require('mini.comment').setup {
         mappings = {
           comment = '<leader>/',
@@ -113,7 +137,9 @@ return {
       }
     end,
   },
+
   -- Custom plugins
+
   { import = 'custom.plugins' },
 }, {
   ui = { icons = vim.g.have_nerd_font },
