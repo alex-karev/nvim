@@ -12,9 +12,9 @@ return {
     vendors = {
       custom = {
         __inherited_from = 'openai',
-        endpoint = 'https://api.nuwaapi.com/v1',
+        endpoint = os.getenv('AVANTE_URL'),
         api_key_name = 'AVANTE_TOKEN',
-        model = 'claude-3-7-sonnet-20250219',
+        model = os.getenv('AVANTE_MODEL'),
         disable_tools = true,
       },
     },
