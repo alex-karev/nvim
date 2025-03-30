@@ -43,6 +43,8 @@ vim.keymap.set('n', '<Tab>', '<cmd>BufferNext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>BufferPrev<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
+vim.keymap.set('n', '<leader>pa', '<cmd>AddProject<CR>', { desc = '[A]dd [P]roject' })
+vim.keymap.set('n', '<leader>pd', '<cmd>DeleteProject<CR>', { desc = '[D]elete [P]roject' })
 
 -- Disable arrow keys in normal mode
 vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
@@ -85,3 +87,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup(require "plugins")
 vim.cmd.colorscheme "catppuccin"
+
+-- [[ Commands ]]
+
+require "custom.commands"

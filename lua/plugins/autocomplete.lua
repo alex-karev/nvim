@@ -36,8 +36,8 @@ return {
         ['<Tab>'] = cmp.mapping.select_next_item(),
         ['<S-Tab>'] = cmp.mapping.select_prev_item(),
         ['<CR>'] = cmp.mapping.confirm { select = true },
-        ['<C-j>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-k>'] = cmp.mapping.scroll_docs(4),
+        ['<S-j>'] = cmp.mapping.scroll_docs(-4),
+        ['<S-k>'] = cmp.mapping.scroll_docs(4),
         -- ['<C-Space>'] = cmp.mapping.complete {}, -- Manually trigger completions
         ['<C-l>'] = cmp.mapping(function()
           if luasnip.expand_or_locally_jumpable() then

@@ -122,6 +122,7 @@ return {
       pyright = {
         settings = {
           python = {
+            pythonPath = "/home/alex/.conda/envs/work/bin/python3",
             analysis = {
               typeCheckingMode = 'off',
             },

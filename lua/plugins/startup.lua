@@ -1,6 +1,6 @@
 return {
   'startup-nvim/startup.nvim',
-  dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope-file-browser.nvim' },
+  dependencies = { 'nvim-telescope/telescope.nvim', 'nvim-lua/plenary.nvim' },
   config = function()
     require('startup').setup {
       header = {
@@ -11,6 +11,10 @@ return {
         title = 'Header',
         margin = 5,
         content = {
+          '',
+          '',
+          '',
+          '',
           ' _   _  _____ _____  _   _ ________  ___',
           '| \\ | ||  ___|  _  || | | |_   _|  \\/  |',
           '|  \\| || |__ | | | || | | | | | | .  . |',
@@ -31,9 +35,9 @@ return {
         title = 'Basic Commands',
         margin = 5,
         content = {
-          { ' Open Project', 'Telescope porjects', '<leader>fp' },
+          { ' Open Project', 'Telescope workspaces', '<leader>fp' },
           { ' Recent Files', 'Telescope oldfiles', '<leader>fo' },
-          { ' File Browser', 'Telescope file_browser', '<leader>ff' },
+          { ' File Browser', 'Telescope find_files', '<leader>ff' },
           { ' Colorschemes', 'Telescope colorscheme', '<leader>fc' },
           { ' New File', "lua require'startup'.new_file()", '<leader>nf' },
         },

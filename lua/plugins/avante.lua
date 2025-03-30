@@ -12,9 +12,9 @@ return {
     vendors = {
       custom = {
         __inherited_from = 'openai',
-        endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1',
+        endpoint = 'https://api.nuwaapi.com/v1',
         api_key_name = 'AVANTE_TOKEN',
-        model = 'deepseek-v3',
+        model = 'claude-3-7-sonnet-20250219',
         disable_tools = true,
       },
     },
