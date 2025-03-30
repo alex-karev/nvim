@@ -29,6 +29,7 @@ return {
   },
   config = function()
     local fb_actions = require('telescope').extensions.file_browser.actions
+
     require('telescope').setup {
       defaults = {
         mappings = {
@@ -45,6 +46,24 @@ return {
             prompt_position = 'top',
           },
           sorting_strategy = 'ascending',
+          mappings = {
+            i = {
+              ['<C-h>'] = {
+                function(prompt_bufnr)
+                  local actions = require 'telescope.actions'
+                  local action_state = require 'telescope.actions.state'
+                  local current_line = action_state.get_current_line()
+                  actions.close(prompt_bufnr)
+                  vim.schedule(function()
+                    require('telescope.builtin').find_files {
+                      default_text = current_line,
+                      find_command = { 'rg', '--files', '--hidden', '--glob', '!**/.git/*', '--glob', '**/.*' },
+                    }
+                  end)
+                end, 
+              },
+            },
+          },
         },
       },
       extensions = {
@@ -55,10 +74,10 @@ return {
           cwd_to_path = true,
           mappings = {
             ['i'] = {
-              ["<C-a>"] = fb_actions.create,
-              ["<C-r>"] = fb_actions.rename,
-              ["<C-d>"] = fb_actions.remove,
-              ["<C-c>"] = fb_actions.change_cwd,
+              ['<C-a>'] = fb_actions.create,
+              ['<C-r>'] = fb_actions.rename,
+              ['<C-d>'] = fb_actions.remove,
+              ['<C-c>'] = fb_actions.change_cwd,
             },
           },
         },
@@ -80,6 +99,9 @@ return {
     vim.keymap.set('n', '<leader>ft', builtin.buffers, { desc = '[F]ind [T]abs' })
     vim.keymap.set('n', '<leader>fp', workspaces.workspaces, { desc = '[F]ind [P]rojects' })
     vim.keymap.set('n', '<leader>fb', file_browser.file_browser, { desc = '[F]ile [B]rowser' })
+    vim.keymap.set('n', '<leader>fe', function()
+      builtin.find_files {}
+    end, { desc = '[F]ile [B]rowser' })
     vim.keymap.set('n', '<leader><leader>', function()
       builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
         previewer = false,

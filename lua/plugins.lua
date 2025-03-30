@@ -11,6 +11,7 @@ return {
   require 'plugins.avante',
   require 'plugins.gitsigns',
   require 'plugins.startup',
+  require 'plugins.ufo',
   --require 'plugins.lint',
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically

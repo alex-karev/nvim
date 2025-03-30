@@ -30,6 +30,10 @@ vim.opt.laststatus= 3
 vim.schedule(function() -- Clipboard integration (after UiEnter)
   vim.opt.clipboard = 'unnamedplus'
 end)
+vim.o.foldcolumn = '0' -- '0' is not bad
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
 
 -- [[ Keymaps ]]
 
