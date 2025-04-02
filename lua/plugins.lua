@@ -54,6 +54,18 @@ return {
     },
   },
 
+  { -- Markdown rendering
+    'MeanderingProgrammer/render-markdown.nvim',
+    dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    opts = {
+      code = {
+        disable_background = true,
+        border = 'thick',
+        highlight = 'ColorColumn',
+      },
+    },
+  },
+
   { -- Toggle terminal
     'akinsho/toggleterm.nvim',
     version = '*',
@@ -66,19 +78,6 @@ return {
     opts = {
       library = {
         { path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-      },
-    },
-  },
-
-  { -- Adds git related signs and utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
       },
     },
   },

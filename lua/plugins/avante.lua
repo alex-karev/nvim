@@ -63,17 +63,5 @@ return {
     'nvim-lua/plenary.nvim',
     'MunifTanjim/nui.nvim',
     'nvim-tree/nvim-web-devicons',
-    {
-      'MeanderingProgrammer/render-markdown.nvim',
-      opts = {
-        code = {
-          enabled = true,
-          language_icon = true,
-          language_name = true,
-        },
-        file_types = { 'markdown', 'Avante' },
-      },
-      ft = { 'markdown', 'Avante' },
-    },
   },
 }
