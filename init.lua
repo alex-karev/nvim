@@ -1,4 +1,4 @@
--- [[ Globals ]] 
+-- [[ Globals ]]
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -26,7 +26,7 @@ vim.opt.inccommand = 'split' -- Substitution preview
 vim.opt.cursorline = true
 vim.opt.scrolloff = 10 -- Screen lines above or below cursor
 vim.opt.confirm = true -- Close confirm
-vim.opt.laststatus= 3
+vim.opt.laststatus = 3
 vim.schedule(function() -- Clipboard integration (after UiEnter)
   vim.opt.clipboard = 'unnamedplus'
 end)
@@ -39,22 +39,29 @@ vim.o.foldenable = true
 
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>', { desc = 'Clear search highlight in normal mode' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
-vim.keymap.set('n', '<leader>t', '<cmd>ToggleTerm size=10<CR>', { desc = 'Toggle terminal' })
+vim.keymap.set('n', '<leader>t', '<cmd>Floaterminal<CR>', { desc = 'Toggle terminal' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>ab', '<cmd>AvanteClear<CR>', { desc = 'avante: clear buffer' })
-vim.keymap.set({'v', 'n'}, '<leader>/', 'gc', { desc = 'Comment block' })
+vim.keymap.set({ 'v', 'n' }, '<leader>/', 'gc', { desc = 'Comment block' })
 vim.keymap.set('n', '<Tab>', '<cmd>BufferNext<CR>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<S-Tab>', '<cmd>BufferPrev<CR>', { desc = 'Previous buffer' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent right and reselect' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent left and reselect' })
 vim.keymap.set('n', '<leader>pa', '<cmd>AddProject<CR>', { desc = '[A]dd [P]roject' })
 vim.keymap.set('n', '<leader>pd', '<cmd>DeleteProject<CR>', { desc = '[D]elete [P]roject' })
+vim.keymap.set('n', '<leader>fb', '<cmd>Oil --float . <CR>', { desc = '[F]ile [B]rowser' })
 
--- Disable arrow keys in normal mode
-vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+-- Disable arrow keys in normal and insert mode
+vim.keymap.set({ 'i', 'n' }, '<left>', '<cmd>echo "Use h to move!! (<C-h> in insert mode)"<CR>')
+vim.keymap.set({ 'i', 'n' }, '<right>', '<cmd>echo "Use l to move!! (<C-l> in insert mode)"<CR>')
+vim.keymap.set({ 'i', 'n' }, '<up>', '<cmd>echo "Use k to move!! (<C-k> in insert mode)"<CR>')
+vim.keymap.set({ 'i', 'n' }, '<down>', '<cmd>echo "Use j to move!! (<C-j> in insert mode)"<CR>')
+
+-- Move cursor in insert mode
+vim.keymap.set('i', '<C-h>', '<left>', { desc = 'Move left in insert mode' })
+vim.keymap.set('i', '<C-l>', '<right>', { desc = 'Move right in insert mode' })
+vim.keymap.set('i', '<C-k>', '<up>', { desc = 'Move up in insert mode' })
+vim.keymap.set('i', '<C-j>', '<down>', { desc = 'Move down in insert mode' })
 
 -- Navigation
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -89,9 +96,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- [[ Plugins ]]
 
-require('lazy').setup(require "plugins")
-vim.cmd.colorscheme "catppuccin"
+require('lazy').setup(require 'plugins')
+vim.cmd.colorscheme 'catppuccin'
 
 -- [[ Commands ]]
 
-require "custom.commands"
+require 'custom.plugins.floaterminal'
+require 'custom.commands'

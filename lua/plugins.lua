@@ -2,7 +2,6 @@ return {
   -- Plugins with big configs
   require 'plugins.colorscheme',
   require 'plugins.telescope',
-  require 'plugins.neotree',
   require 'plugins.lsp',
   require 'plugins.treesitter',
   require 'plugins.autoformat',
@@ -12,6 +11,7 @@ return {
   require 'plugins.gitsigns',
   require 'plugins.startup',
   require 'plugins.ufo',
+  require 'plugins.oil',
   --require 'plugins.lint',
 
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
@@ -64,12 +64,6 @@ return {
         highlight = 'ColorColumn',
       },
     },
-  },
-
-  { -- Toggle terminal
-    'akinsho/toggleterm.nvim',
-    version = '*',
-    opts = {},
   },
 
   { -- Configure lua for nvim
@@ -140,9 +134,6 @@ return {
     end,
   },
 
-  -- Custom plugins
-
-  { import = 'custom.plugins' },
 }, {
   ui = { icons = vim.g.have_nerd_font },
 }
